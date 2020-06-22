@@ -1,20 +1,36 @@
+{% load static %}
 <html>
     <head>
-        <title>Blog Django Girls</title>
+        <title>Blog </title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        
+        <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+        
+        <link rel="stylesheet" href="{% static 'css/blogapp.css' %}">    
+        
     </head>
     <body>
-        <div>
-            <h1>Posts</h1>
+        <div class="page-header">
+            <h1><a href=''>Blog</a></h1>
         </div>
-            {% for post in posts %} 
-            <hr>
-            <div>
-                <p>Publicado: {{ post.published_date }}  </p>
-                <h2><a href=''>{{ post.title }}</a></h2>
-                <p>{{ post.text | linebreaksbr }}</p>
-                <b>Author: </b> {{ post.author }}
+          
+        <div class="content container">
+            <div class="row">
+                <div class="col-md-8">
+                    {% for post in posts %} 
+                    <hr>
+                    <div class="post">
+                        <div class="date">
+                            <p>Publicado: {{ post.published_date }}  </p>
+                        </div>
+                        <h2><a href=''>{{ post.title }}</a></h2>
+                        <p>{{ post.text | linebreaksbr }}</p>
+                        <b>Author: </b> {{ post.author }}
+                    </div>
+                    {% endfor %}
+                    </div>
             </div>
-            {% endfor %}
-
+        </div>
     </body>
 </html>
